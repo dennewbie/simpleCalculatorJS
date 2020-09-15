@@ -1,0 +1,63 @@
+.calculatorButton {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #9e9e9e));
+    background: -moz-linear-gradient(center top, #ffffff 5%, #9e9e9e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#9e9e9e');
+    background-color: #ffffff;
+    -webkit-border-top-left-radius: 35px;
+    -moz-border-radius-topleft: 35px;
+    border-top-left-radius: 35px;
+    -webkit-border-top-right-radius: 35px;
+    -moz-border-radius-topright: 35px;
+    border-top-right-radius: 35px;
+    -webkit-border-bottom-right-radius: 35px;
+    -moz-border-radius-bottomright: 35px;
+    border-bottom-right-radius: 35px;
+    -webkit-border-bottom-left-radius: 35px;
+    -moz-border-radius-bottomleft: 35px;
+    border-bottom-left-radius: 35px;
+    text-indent: 0;
+    border: 3px solid #858585;
+    display: inline-block;
+    color: #000000;
+    font-family: arial;
+    font-size: 24px;
+    font-weight: bold;
+    font-style: normal;
+    height: 70%;
+    line-height: 70px;
+    width: 70px;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0px #ffffff;
+}
+
+.calculatorButton:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9e9e9e), color-stop(1, #ffffff));
+    background: -moz-linear-gradient(center top, #9e9e9e 5%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#ffffff');
+    background-color: #9e9e9e;
+}
+
+.calculatorButton:active {
+    position: relative;
+    top: 1px;
+}
+
+.tableCalculator {
+    margin-left:auto; 
+    margin-right:auto;
+    width: 20%;
+}
+
+.resultTable {
+    margin-left:auto; 
+    margin-right:auto;
+    margin-top: 10%;
+    width: 20%;
+}
+
+.resultLabel {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+}
