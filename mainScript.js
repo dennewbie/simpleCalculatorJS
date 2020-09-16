@@ -161,7 +161,6 @@ $(window).load(function () {
             deleteOlderNumbersAndOperations();
             return;
         }
-
         $(idLabel).text(number);
     });
 
@@ -180,27 +179,27 @@ $(window).load(function () {
             }
             updateLabel(digitsArray);
         }
-
     });
 
     $(plusButton).click(function () {
-        saveLabelValue();
         operationsArray.push("+");
+        checkOperationsArray();
+
     });
 
     $(minusButton).click(function () {
-        saveLabelValue();
         operationsArray.push("-");
+        checkOperationsArray();
     });
 
     $(mulButton).click(function () {
-        saveLabelValue();
         operationsArray.push("*");
+        checkOperationsArray();
     });
 
     $(divButton).click(function () {
-        saveLabelValue();
         operationsArray.push("/");
+        checkOperationsArray();
     });
 
     $(equalButton).click(async function () {
@@ -210,7 +209,7 @@ $(window).load(function () {
 
         await saveLabelValue();
         deleteAll();
-        getResult();
+        selectNextOperation();
         deleteOlderNumbersAndOperations();
     });
 });
@@ -226,7 +225,7 @@ function getNumber(idButton) {
 
 function digitLimits() {
     if (nDigitsInserted > 20 || $(idLabel).text().length > 20) {
-        alert("Overflow. Please try again...");
+        alert("Number not allowed. Please try again...");
         return true;
     } else {
         return false;
@@ -242,13 +241,18 @@ function getLabelValue() {
     }
 }
 
+function checkOperationsArray() {
+    saveLabelValue();
+    if (operationsArray.length > numbersArray.length) {
+        operationsArray.splice(operationsArray.length - 2, 1);
+    }
+}
+
 async function saveLabelValue() {
     var labelValue = parseFloat(getLabelValue());
 
     if (labelValue != undefined) {
-        if (Number.isNaN(labelValue)) {
-            numbersArray.push(0);
-        } else {
+        if (!Number.isNaN(labelValue)) {
             numbersArray.push(labelValue);
         }
         nNumbersInserted += 1;
@@ -281,31 +285,51 @@ function changeSignTextLabel(oppositeNumber) {
     $(idLabel).text(oppositeNumber);
 }
 
-function getResult() {
+function selectNextOperation() {
+
     let result = 0.00;
     while (operationsArray.length > 0) {
-        let singleOperation = operationsArray.shift();
-        numbersArray = numbersArray.filter(function (value) {
-            return !Number.isNaN(value);
-        });
+        let firstMultiplicationIndex = parseInt(operationsArray.indexOf("*"));
+        let firstDivsionIndex = parseInt(operationsArray.indexOf("/"));
+        let finalIndex = 0;
+        numbersArray = removeNaN();
 
-        let firstNumber = parseFloat(numbersArray.shift()),
-            secondNumber = parseFloat(numbersArray.shift());
-        if (Number.isNaN(firstNumber) || firstNumber == undefined || firstNumber == null) {
-            firstNumber = 0.00;
+        if (firstMultiplicationIndex > -1 && firstDivsionIndex > -1) {
+            if (firstMultiplicationIndex < firstDivsionIndex) {
+                result = operation("*", firstMultiplicationIndex);
+                finalIndex = firstMultiplicationIndex;
+            } else {
+                result = operation("/", firstDivsionIndex);
+                finalIndex = firstDivsionIndex;
+            }
+        } else if (firstMultiplicationIndex > -1) {
+            result = operation("*", firstMultiplicationIndex);
+            finalIndex = firstMultiplicationIndex;
+        } else if (firstDivsionIndex > -1) {
+            result = operation("/", firstDivsionIndex);
+            finalIndex = firstDivsionIndex;
+        } else {
+            let singleOperation = operationsArray.shift();
+            result = operation(singleOperation);
+            finalIndex = 0;
         }
 
-        if (Number.isNaN(secondNumber) || secondNumber == undefined || secondNumber == null) {
-            secondNumber = 0.00;
-        }
+        numbersArray.splice(finalIndex, 0, result);
+    }
+    updateLabelWithResult(result);
+}
 
-        switch (singleOperation) {
-            case "+":
-                result = parseFloat(firstNumber + secondNumber);
-                break;
-            case "-":
-                result = parseFloat(firstNumber - secondNumber);
-                break;
+function operation(kindOfOperation, firstOperationIndex) {
+    let result = 0.00;
+    if (kindOfOperation == "*" || kindOfOperation == "/") {
+        operationsArray.splice(firstOperationIndex, 1);
+        let firstNumber = parseFloat(numbersArray[firstOperationIndex]),
+            secondNumber = parseFloat(numbersArray[firstOperationIndex + 1]);
+        numbersArray.splice(firstOperationIndex, 1);
+        numbersArray.splice(firstOperationIndex, 1);
+        firstNumber = checkSafetyNumber(firstNumber);
+        secondNumber = checkSafetyNumber(secondNumber);
+        switch (kindOfOperation) {
             case "*":
                 result = parseFloat(firstNumber * secondNumber);
                 break;
@@ -316,11 +340,41 @@ function getResult() {
                 fatalError();
                 break;
         }
-
-        numbersArray.unshift(result);
+    } else if (kindOfOperation == "+" || kindOfOperation == "-") {
+        let firstNumber = parseFloat(numbersArray.shift()),
+            secondNumber = parseFloat(numbersArray.shift());
+        firstNumber = checkSafetyNumber(firstNumber);
+        secondNumber = checkSafetyNumber(secondNumber);
+        switch (kindOfOperation) {
+            case "+":
+                result = parseFloat(firstNumber + secondNumber);
+                break;
+            case "-":
+                result = parseFloat(firstNumber - secondNumber);
+                break;
+            default:
+                fatalError();
+                break;
+        }
     }
-    updateLabelWithResult(result);
+
+    return result;
 }
+
+function checkSafetyNumber(number) {
+    if (Number.isNaN(number) || number == undefined || number == null) {
+        number = 0.00;
+    } else {
+        return number;
+    }
+}
+
+function removeNaN() {
+    return (numbersArray.filter(function (value) {
+        return !Number.isNaN(value);
+    }));
+}
+
 
 function updateLabelWithResult(result) {
     if (Number.isNaN(result) || result == undefined || result == null) {

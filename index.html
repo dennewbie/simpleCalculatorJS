@@ -5,49 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styleSheet.css">
-    <title>Calculator Denny Caruso</title>
+    <title>Calculator - Denny Caruso --- </title>
 </head>
 
 <body>
     <div class="divCalc">
-        <table class="resultTable">
-            <tr>
-                <td>
-                    <h3><label id="resultLabel" class="resultLabel"> 0</label></h3>
-                </td>
-            </tr>
-        </table>
+        <div class="divResult">
+            <table class="tableResult">
+                <tr>
+                    <td>
+                        <h3><label id="resultLabel" class="resultLabel"> 0</label></h3>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
         <table class="tableCalculator">
             <tr>
-                <td><input type="button" value="√" id="sqrtButton" class="calculatorButton"></td>
-                <td><input type="button" value="±" id="changeSignButton" class="calculatorButton"></td>
-                <td><input type="button" value="del" id="deleteAllButton" class="calculatorButton"></td>
-                <td><input type="button" value="<" id="deleteLastButton" class="calculatorButton"></td>
+                <td><input type="button" value="√" id="sqrtButton" class="calculatorButtonOperation"></td>
+                <td><input type="button" value="±" id="changeSignButton" class="calculatorButtonOperation"></td>
+                <td><input type="button" value="del" id="deleteAllButton" class="calculatorButtonOperation"></td>
+                <td><input type="button" value="<" id="deleteLastButton" class="calculatorButtonOperation"></td>
             </tr>
             <tr>
                 <td><input type="button" value="1" id="oneButton" class="calculatorButton"></td>
                 <td><input type="button" value="2" id="twoButton" class="calculatorButton"></td>
                 <td><input type="button" value="3" id="threeButton" class="calculatorButton"></td>
-                <td><input type="button" value="+" id="plusButton" class="calculatorButton"></td>
+                <td><input type="button" value="+" id="plusButton" class="calculatorButtonOperation"></td>
             </tr>
             <tr>
                 <td><input type="button" value="4" id="fourButton" class="calculatorButton"></td>
                 <td><input type="button" value="5" id="fiveButton" class="calculatorButton"></td>
                 <td><input type="button" value="6" id="sixButton" class="calculatorButton"></td>
-                <td><input type="button" value="-" id="minusButton" class="calculatorButton"></td>
+                <td><input type="button" value="-" id="minusButton" class="calculatorButtonOperation"></td>
             </tr>
             <tr>
                 <td><input type="button" value="7" id="sevenButton" class="calculatorButton"></td>
                 <td><input type="button" value="8" id="eightButton" class="calculatorButton"></td>
                 <td><input type="button" value="9" id="nineButton" class="calculatorButton"></td>
-                <td><input type="button" value="*" id="mulButton" class="calculatorButton"></td>
+                <td><input type="button" value="*" id="mulButton" class="calculatorButtonOperation"></td>
             </tr>
             <tr>
                 <td><input type="button" value="." id="dotButton" class="calculatorButton"></td>
                 <td><input type="button" value="0" id="zeroButton" class="calculatorButton"></td>
                 <td><input type="button" value="=" id="equalButton" class="calculatorButton"></td>
-                <td><input type="button" value="/" id="divButton" class="calculatorButton"></td>
+                <td><input type="button" value="/" id="divButton" class="calculatorButtonOperation"></td>
             </tr>
         </table>
     </div>

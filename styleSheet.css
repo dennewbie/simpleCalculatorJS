@@ -1,63 +1,157 @@
 .calculatorButton {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #9e9e9e));
-    background: -moz-linear-gradient(center top, #ffffff 5%, #9e9e9e 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#9e9e9e');
-    background-color: #ffffff;
-    -webkit-border-top-left-radius: 35px;
-    -moz-border-radius-topleft: 35px;
-    border-top-left-radius: 35px;
-    -webkit-border-top-right-radius: 35px;
-    -moz-border-radius-topright: 35px;
-    border-top-right-radius: 35px;
-    -webkit-border-bottom-right-radius: 35px;
-    -moz-border-radius-bottomright: 35px;
-    border-bottom-right-radius: 35px;
-    -webkit-border-bottom-left-radius: 35px;
-    -moz-border-radius-bottomleft: 35px;
-    border-bottom-left-radius: 35px;
-    text-indent: 0;
-    border: 3px solid #858585;
+    background-color: #b5b5b5;
+    -webkit-border-top-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    border-top-left-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    -moz-border-radius-topright: 20px;
+    border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-bottomright: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-bottom-left-radius: 20px;
+
+    border: 0px solid #858585;
     display: inline-block;
     color: #000000;
     font-family: arial;
     font-size: 24px;
-    font-weight: bold;
     font-style: normal;
     height: 70%;
     line-height: 70px;
     width: 70px;
-    text-decoration: none;
     text-align: center;
-    text-shadow: 1px 1px 0px #ffffff;
+}
+
+.calculatorButtonOperation {
+    background-color: #fe9d11;
+    -webkit-border-top-left-radius: 20px;
+    -moz-border-radius-topleft: 20px;
+    border-top-left-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+    -moz-border-radius-topright: 20px;
+    border-top-right-radius: 20px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-bottomright: 20px;
+    border-bottom-right-radius: 20px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-bottomleft: 20px;
+    border-bottom-left-radius: 20px;
+
+    border: 0px solid #858585;
+    display: inline-block;
+    color: #000000;
+    font-family: arial;
+    font-size: 24px;
+    font-style: normal;
+    height: 70%;
+    line-height: 70px;
+    width: 70px;
+    text-align: center;
 }
 
 .calculatorButton:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #9e9e9e), color-stop(1, #ffffff));
-    background: -moz-linear-gradient(center top, #9e9e9e 5%, #ffffff 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9e9e9e', endColorstr='#ffffff');
-    background-color: #9e9e9e;
+    background-color: #838282;
 }
 
 .calculatorButton:active {
-    position: relative;
-    top: 1px;
+    background-color: #838282;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.calculatorButtonOperation:hover {
+    background-color: #c57b13;
+}
+
+.calculatorButtonOperation:active {
+    background-color: #c57b13;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 .tableCalculator {
-    margin-left:auto; 
-    margin-right:auto;
+    padding-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
     width: 20%;
+    border-collapse: separate;
+    border-spacing: 14px 14px;
+    word-break: break-word;
 }
 
-.resultTable {
-    margin-left:auto; 
-    margin-right:auto;
+.tableResult {
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10%;
-    width: 20%;
+
+    border-collapse: separate;
+    border-spacing: 14px 14px;
+    max-width: 200px;
+    width: 80% !important;
+    word-break: break-word;
+}
+
+.td {
+    padding: 10px;
 }
 
 .resultLabel {
     display: block;
     text-align: center;
     line-height: 150%;
+    color: white;
+    font-family: arial;
+    font-size: 24px;
+    font-style: normal;
 }
+
+.divCalc {
+    padding-top: 3%;
+    background-color: rgb(0, 0, 0);
+    width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-border-top-left-radius: 25px;
+    -moz-border-radius-topleft: 25px;
+    border-top-left-radius: 25px;
+    -webkit-border-top-right-radius: 25px;
+    -moz-border-radius-topright: 25px;
+    border-top-right-radius: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    -moz-border-radius-bottomright: 25px;
+    border-bottom-right-radius: 25px;
+    -webkit-border-bottom-left-radius: 25px;
+    -moz-border-radius-bottomleft: 25px;
+    border-bottom-left-radius: 25px;
+    overflow: hidden;
+}
+
+.divCalc table {
+    
+    max-width: 400px;
+    width: 100% !important;
+}
+
+.divResult {
+    background-color: rgb(66, 66, 66);
+    width: 375px;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-border-top-left-radius: 25px;
+    -moz-border-radius-topleft: 25px;
+    border-top-left-radius: 25px;
+    -webkit-border-top-right-radius: 25px;
+    -moz-border-radius-topright: 25px;
+    border-top-right-radius: 25px;
+    -webkit-border-bottom-right-radius: 25px;
+    -moz-border-radius-bottomright: 25px;
+    border-bottom-right-radius: 25px;
+    -webkit-border-bottom-left-radius: 25px;
+    -moz-border-radius-bottomleft: 25px;
+    border-bottom-left-radius: 25px;
+    overflow: hidden;
+}
+
