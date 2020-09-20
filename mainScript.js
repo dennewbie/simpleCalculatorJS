@@ -37,102 +37,52 @@ let digitsArray = new Array();
 
         $(window).load(function () {
             $(oneButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(oneButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(oneButton);
                 updateLabel(digitsArray);
             });
 
             $(twoButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(twoButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(twoButton);
                 updateLabel(digitsArray);
             });
 
             $(threeButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(threeButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(threeButton);
                 updateLabel(digitsArray);
             });
 
             $(fourButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(fourButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(fourButton);
                 updateLabel(digitsArray);
             });
 
             $(fiveButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(fiveButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(fiveButton);
                 updateLabel(digitsArray);
             });
 
             $(sixButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(sixButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(sixButton);
                 updateLabel(digitsArray);
             });
 
             $(sevenButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(sevenButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(sevenButton);
                 updateLabel(digitsArray);
             });
 
             $(eightButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(eightButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(eightButton);
                 updateLabel(digitsArray);
             });
 
             $(nineButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(nineButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(nineButton);
                 updateLabel(digitsArray);
             });
 
             $(zeroButton).click(function () {
-                if (digitLimits() == false) {
-                    var number = getNumber(zeroButton);
-                    digitsArray[nDigitsInserted] = number;
-                    nDigitsInserted += 1;
-                }
-
+                getDigit(zeroButton);
                 updateLabel(digitsArray);
             });
 
@@ -213,6 +163,14 @@ let digitsArray = new Array();
                 deleteOlderNumbersAndOperations();
             });
         });
+
+        function getDigit(idDigit) {
+            if (digitLimits() == false) {
+                var number = getNumber(idDigit);
+                digitsArray[nDigitsInserted] = number;
+                nDigitsInserted += 1;
+            }
+        }
 
         function getNumber(idButton) {
             if (nDigitsInserted == 1 && digitsArray[0] == 0) {
